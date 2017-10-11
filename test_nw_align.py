@@ -4,7 +4,7 @@ from random import choice
 
 out = {}
 
-cmds = {"orig": ["python2", "nw_align_origianl.py"],
+cmds = {"orig": ["python2", "nw_align_original.py"],
         "numpy": ["python", "nw_align.py", "numpy"],
         "numba": ["python", "nw_align.py", "numba"],
         #"torchcuda": ["python", "pairwise.py", "torchcuda"],
