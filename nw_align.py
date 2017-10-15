@@ -12,6 +12,8 @@ UP, LF, DG, NO = range(4)
 ntlist = ["","A","C","G","T","-"]
 ntdict = dict((j,i) for i,j in enumerate(ntlist))
 
+eps = 1e-8
+
 def _convert_dna(dnastr):
     return [ntdict[nt] for nt in dnastr]
 
@@ -24,7 +26,7 @@ def global_align(seqi, seqj, gap=-1, match=1, mismatch=-1, mode="torch"):
     """
 
     if mode == "numba":
-        return global_align_numba(seqj, seqi, gap=gap, match=match, mismatch=mismatch, mode='numpy')
+        return global_align_numba(seqi, seqj, gap=gap, match=match, mismatch=mismatch, mode='numpy')
 
     seqja = _convert_dna(seqj)
     seqia = _convert_dna(seqi)
@@ -72,10 +74,10 @@ def global_align(seqi, seqj, gap=-1, match=1, mismatch=-1, mode="torch"):
             up_score = score[i-1, j] + gap
             lf_score = score[i, j-1] + gap
 
-            if dg_score >= up_score and dg_score >= lf_score:
+            if dg_score >= up_score-eps and dg_score >= lf_score-eps:
                 score[i, j] = dg_score
                 point[i, j] = DG
-            elif lf_score >= dg_score and lf_score >= up_score:
+            elif lf_score >= dg_score-eps and lf_score >= up_score-eps:
                 score[i, j] = lf_score
                 point[i, j] = LF
             else:
