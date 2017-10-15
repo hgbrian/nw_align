@@ -107,6 +107,6 @@ def global_align(seqj, seqi, gap=-1, matrix=None, match=1, mismatch=-1):
         
 if __name__ == "__main__":
     
-    print "\n".join(global_align(sys.argv[1], sys.argv[2]))
+    print("\n".join(global_align(sys.argv[1], sys.argv[2])))
     #print read_matrix(sys.argv[3]).keys()
 
