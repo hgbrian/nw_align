@@ -152,8 +152,8 @@ when not defined(js): # defined(c) not working?
 
 
 when defined(js):
-  // add console.log(nw_align_js(process.argv[2], process.argv[3])); to nw_align.js
-  // as the last line for command-line version
+  # add console.log(nw_align_js(process.argv[2], process.argv[3])); to nw_align.js
+  # as the last line for command-line version
   proc nw_align_js(seqi: cstring, seqj: cstring): cstring {.exportc.} =
     var alignment = align($seqi, $seqj, gap, match, mismatch)
     result = alignment.align_i & "\n" & alignment.align_j
