@@ -270,7 +270,7 @@ let
   gap = -1.0
   match = float(1.0)
   mismatch = -1.0
-  
+
 
 when not defined(js): # defined(c) not working?
   import os
